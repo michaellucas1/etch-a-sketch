@@ -66,13 +66,14 @@ function getDarkerColor(gridItem){
         result = `rgba(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]}, 1)`;
     }
     return result;
-}/*
+}
 const gridResetButton=document.querySelector(".grid-reset");
 gridResetButton.addEventListener("click",()=>{
     const  gridContainer=document.querySelector('.grid-container');
     gridContainer.textContent="";
     createGrid(currentGridSize);
-});*/
+});
+
 const gridSetButton=document.querySelector(".grid-size-button");
 gridSetButton.addEventListener("click",()=>{
     const newGridSize=prompt("Enter a number");
