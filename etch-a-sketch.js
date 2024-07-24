@@ -67,19 +67,21 @@ function getDarkerColor(gridItem){
     }
     return result;
 }
+const gridResetButton=document.querySelector(".grid-reset");
+gridResetButton.addEventListener("click",()=>{
+    //const  gridContainer=document.querySelector('.grid-container');
+    gridContainer.textContent="";
+    createGrid(currentGridSize);
+});
 const gridSetButton=document.querySelector(".grid-size-button");
 gridSetButton.addEventListener("click",()=>{
     const newGridSize=prompt("Enter a number");
     if(typeof newGridSize !== 'undefined' && newGridSize <=100 ){
-        const  gridContainer=document.querySelector('.grid-container');
+       // const  gridContainer=document.querySelector('.grid-container');
         gridContainer.textContent="";
         createGrid(newGridSize);
     }
     
 });
-const gridResetButton=document.querySelector(".grid-reset");
-gridResetButton.addEventListener("click",()=>{
-    gridContainer.textContent="";
-    createGrid(currentGridSize);
-});
+
 createGrid(currentGridSize);
