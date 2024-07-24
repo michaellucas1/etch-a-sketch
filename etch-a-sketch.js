@@ -67,12 +67,6 @@ function getDarkerColor(gridItem){
     }
     return result;
 }
-const gridResetButton=document.querySelector(".grid-reset");
-gridResetButton.addEventListener("click",()=>{
-    const  gridContainer=document.querySelector('.grid-container');
-    gridContainer.textContent="";
-    createGrid(currentGridSize);
-});
 
 const gridSetButton=document.querySelector(".grid-size-button");
 gridSetButton.addEventListener("click",()=>{
@@ -84,5 +78,10 @@ gridSetButton.addEventListener("click",()=>{
     }
     
 });
-
+const gridResetButton=document.querySelector(".grid-reset");
+gridResetButton.addEventListener("click",()=>{
+    const  gridContainer=document.querySelector('.grid-container');
+    gridContainer.textContent="";
+    createGrid(currentGridSize);
+});
 createGrid(currentGridSize);
