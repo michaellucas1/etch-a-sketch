@@ -14,15 +14,14 @@ body{
 }
 .grid-container{
     display:flex;
-    flex-basis: 1;
 }
 .grid-row{
     display:block;
 }
 .grid-item{
-    padding:15px;
-    border-style: dashed;
-    border-width: 1px;
+    flex:auto;
+    padding:5px;
+    border-width: 0.01px;
 }
 .grid-button-container{
     display: flex;
