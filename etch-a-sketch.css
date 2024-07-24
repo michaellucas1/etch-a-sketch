@@ -24,3 +24,14 @@ body{
     border-style: dashed;
     border-width: 1px;
 }
+.grid-button-container{
+    display: flex;
+    justify-content: center;
+}
+.grid-size-button{
+    margin-right:10px;
+    margin-bottom:10px;
+}
+.grid-color-reset{
+    margin-bottom:10px;
+}
