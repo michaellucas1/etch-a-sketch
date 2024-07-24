@@ -1,5 +1,7 @@
 const gridContainer = document.querySelector(".grid-container");
+let currentGridSize=16;
 function createGrid(gridCount){
+    setCurrentGridSize(gridCount);
     for(let i=0; i<gridCount;i++){
         const gridArray=new Array(gridCount);
         gridArray[i]= document.createElement("div");
@@ -21,6 +23,17 @@ function createGrid(gridCount){
                 }
                 
             });
+            gridItem.addEventListener("touchmove",(event)=>{
+                event.stopImmediatePropagation();
+                const backColor=String(window.getComputedStyle(gridItem).backgroundColor);
+                if(backColor==='rgba(0, 0, 0, 0)'){
+                    gridItem.style.backgroundColor=getRandomColor();
+                }
+                else{
+                    gridItem.style.backgroundColor=getDarkerColor(gridItem);
+                }
+                
+            });
             gridArray[i].appendChild(gridItem);
         }
         gridContainer.appendChild(gridArray[i]);
@@ -28,6 +41,12 @@ function createGrid(gridCount){
 }
 function calculateSquareSize(gridCount){
     return 250 / gridCount;
+}
+function setCurrentGridSize(gridCount){
+    currentGridSize = gridCount;
+}
+function getCurrentGridSize(){
+    return currentGridSize;
 }
 function setGridShadow(gridItem){
     gridItem.style.boxShadow='0px 0px 0.8px rgba(0,0,0,0.5)';
@@ -69,6 +88,11 @@ gridSetButton.addEventListener("click",()=>{
     }
     
 });
-createGrid(16);
+const gridResetButton=document.querySelector(".grid-reset");
+gridResetButton.addEventListener("click",()=>{
+    gridContainer.textContent="";
+    createGrid(currentGridSize);
+});
+createGrid(currentGridSize);
 
 
