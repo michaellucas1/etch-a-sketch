@@ -1,26 +1,38 @@
 const gridContainer = document.querySelector(".grid-container");
-for(let i=0; i<16;i++){
-    const gridArray=new Array(16);
-    gridArray[i]= document.createElement("div");
-    gridArray[i].classList.add("grid-row");
-    for(let j=0;j<16;j++){
-        const gridItem = document.createElement("div");
-        gridItem.classList.add("grid-item");
-        gridArray[i].appendChild(gridItem); 
-        gridItem.addEventListener("mouseover",(event)=>{
-            event.stopImmediatePropagation();
-            const backColor=String(window.getComputedStyle(gridItem).backgroundColor);
-            if(backColor==='rgba(0, 0, 0, 0)'){
-                gridItem.style.backgroundColor=getRandomColor();
-            }
-            else{
-                gridItem.style.backgroundColor=getDarkerColor(gridItem);
-            }
+function createGrid(gridCount){
+    for(let i=0; i<gridCount;i++){
+        const gridArray=new Array(gridCount);
+        gridArray[i]= document.createElement("div");
+        gridArray[i].classList.add("grid-row");
+        for(let j=0;j<gridCount;j++){
+            const gridItem = document.createElement("div");
+            gridItem.style.padding=`${calculateSquareSize(gridCount)}px`;
+            gridItem.classList.add("grid-item");
             
-        });
-        gridArray[i].appendChild(gridItem);
+            gridArray[i].appendChild(setGridShadow(gridItem)); 
+            gridItem.addEventListener("mouseover",(event)=>{
+                event.stopImmediatePropagation();
+                const backColor=String(window.getComputedStyle(gridItem).backgroundColor);
+                if(backColor==='rgba(0, 0, 0, 0)'){
+                    gridItem.style.backgroundColor=getRandomColor();
+                }
+                else{
+                    gridItem.style.backgroundColor=getDarkerColor(gridItem);
+                }
+                
+            });
+            gridArray[i].appendChild(gridItem);
+        }
+        gridContainer.appendChild(gridArray[i]);
     }
-    gridContainer.appendChild(gridArray[i]);
+}
+createGrid(16);
+function calculateSquareSize(gridCount){
+    return 250 / gridCount;
+}
+function setGridShadow(gridItem){
+    gridItem.style.boxShadow='0px 0px 0.8px rgba(0,0,0,0.5)';
+    return gridItem;
 }
 function getRandomColor(){
     const red = Math.floor(Math.random()*256);
@@ -45,8 +57,17 @@ function getDarkerColor(gridItem){
         }
         result = `rgba(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]}, 1)`;
     }
-    
     return result;
 }
+const gridSetButton=document.querySelector(".grid-size-button");
+gridSetButton.addEventListener("click",()=>{
+    const newGridSize=prompt("Enter a number");
+    if(typeof newGridSize !== 'undefined'){
+        const  gridContainer=document.querySelector('.grid-container');
+        gridContainer.textContent="";
+        createGrid(newGridSize);
+    }
+    
+});
 
 
