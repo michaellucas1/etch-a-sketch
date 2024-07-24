@@ -40,18 +40,19 @@ function getRandomColor(){
     return `rgba(${red}, ${green}, ${blue}, 1)`;
 }
 function getDarkerColor(gridItem){
-    const rgbValues=window.getComputedStyle(gridItem).backgroundColor.match(/\d+/g);
+    
+    const rgbValues=window.getComputedStyle(gridItem).backgroundColor.match(/\d+/g);//stores the rgb values of current bg color of an element to an array
     const backColor=String(window.getComputedStyle(gridItem).backgroundColor);
     const rgbArray=new Array(3);
     let result='';
-    if(backColor==='rgb(0, 0, 0)'){
+    if(backColor==='rgb(0, 0, 0)'){//check if the bg color is already black. It returns the rgba equivalent to black and skip the else statement for less processing.
         result = 'rgba(0, 0, 0, 1)'
     }
     else{
         for(let i=0;i<rgbValues.length;i++){
             rgbArray[i]=rgbValues[i]-14;// reduce color by 10%
             if(rgbArray[i]<0){ 
-                rgbArray[i]=0;//if the rgb values of the element is negative, its set to 0.
+                rgbArray[i]=0;//if the rgb values of the element is negative, set it to 0.
             }
         }
         result = `rgba(${rgbArray[0]}, ${rgbArray[1]}, ${rgbArray[2]}, 1)`;
