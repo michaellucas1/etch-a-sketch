@@ -23,18 +23,6 @@ function createGrid(gridCount){
                 }
                 
             });
-            gridItem.addEventListener("touchmove",(event)=>{
-                event.stopImmediatePropagation();
-                event.preventDefault();
-                const backColor=String(window.getComputedStyle(gridItem).backgroundColor);
-                if(backColor==='rgba(0, 0, 0, 0)'){
-                    gridItem.style.backgroundColor=getRandomColor();
-                }
-                else{
-                    gridItem.style.backgroundColor=getDarkerColor(gridItem);
-                }
-                
-            });
             gridArray[i].appendChild(gridItem);
         }
         gridContainer.appendChild(gridArray[i]);
@@ -95,5 +83,3 @@ gridResetButton.addEventListener("click",()=>{
     createGrid(currentGridSize);
 });
 createGrid(currentGridSize);
-
-
