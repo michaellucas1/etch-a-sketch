@@ -26,7 +26,6 @@ function createGrid(gridCount){
         gridContainer.appendChild(gridArray[i]);
     }
 }
-createGrid(16);
 function calculateSquareSize(gridCount){
     return 250 / gridCount;
 }
@@ -62,12 +61,13 @@ function getDarkerColor(gridItem){
 const gridSetButton=document.querySelector(".grid-size-button");
 gridSetButton.addEventListener("click",()=>{
     const newGridSize=prompt("Enter a number");
-    if(typeof newGridSize !== 'undefined'){
+    if(typeof newGridSize !== 'undefined' && newGridSize <=100 ){
         const  gridContainer=document.querySelector('.grid-container');
         gridContainer.textContent="";
         createGrid(newGridSize);
     }
     
 });
+createGrid(16);
 
 
