@@ -9,17 +9,21 @@ for(let i=0; i<16;i++){
         gridArray[i].appendChild(gridItem); 
         gridItem.addEventListener("mouseover",(event)=>{
             event.stopImmediatePropagation();
-            gridItem.style.backgroundColor=getRandomColor();
-        });  
+            const backColor=String(window.getComputedStyle(gridItem).backgroundColor);
+            if(backColor==='rgba(0, 0, 0, 0)'){
+                gridItem.style.backgroundColor=getRandomColor();
+            }
+            
+        });
         gridArray[i].appendChild(gridItem);
     }
     gridContainer.appendChild(gridArray[i]);
 }
-
 function getRandomColor(){
     const red = Math.floor(Math.random()*256);
     const green= Math.floor(Math.random()*256);
     const blue = Math.floor(Math.random()*256);
-    return `rgb(${red}, ${green}, ${blue})`;
+    const alpha = Math.floor(Math.random()*256);
+    return `rgb(${red}, ${green}, ${blue}, ${alpha})`;
 }
 
