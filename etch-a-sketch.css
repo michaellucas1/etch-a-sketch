@@ -1,6 +1,25 @@
+body{
+    padding:0px;
+    margin:0px;
+}
+.header{
+    display:flex;
+    justify-content:center;
+    padding:10px;
+}
+.grid-center{
+    display:flex;
+    justify-content: center;
+}
 .grid-container{
     display:flex;
+    flex-basis: 1;
+}
+.grid-row{
+    display:block;
 }
 .grid-item{
-    flex:1;
+    padding:15px;
+    border-style: dashed;
+    border-width: 1px;
 }
