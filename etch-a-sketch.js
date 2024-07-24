@@ -37,7 +37,6 @@ function getDarkerColor(gridItem){
         result = 'rgba(0, 0, 0, 1)'
     }
     else{
-        console.log("this is from the else statement");
         for(let i=0;i<rgbValues.length;i++){
             rgbArray[i]=rgbValues[i]-14;// reduce color by 10%
             if(rgbArray[i]<0){ 
